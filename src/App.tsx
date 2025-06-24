@@ -1,9 +1,8 @@
 import './App.css'
+import Quotes from './components/Quotes';
 
 function App() {
-  return (
-    <h1 className='text-xl text-red-800'>Hello TypeScript + React</h1>
-  );
+  return <Quotes />
 }
 
 export default App
