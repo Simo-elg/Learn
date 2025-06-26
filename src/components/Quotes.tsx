@@ -1,4 +1,4 @@
-import {useState } from "react";
+import {useState, useEffect} from "react";
 
 interface QuoteData {
     content: string;
@@ -18,6 +18,9 @@ const quotes: QuoteData[] = [
 
 export default function Quotes() {
     const [index, setIndex] = useState<number>(0);
+    const [clicks, setClicks] = useState(0);
+    const [isAuto, setIsAuto] = useState<boolean>(true);
+
 
     const quote = quotes[index]
 
@@ -25,6 +28,18 @@ export default function Quotes() {
         setIndex(prev => (prev === 0 ? 1:0));
     }
 
+    const nextQuoteWithClick = () => {
+        nextQuote();
+        setClicks(c => c + 1);
+    }
+
+    useEffect(() => {
+        if (!isAuto){return;}
+
+        const id = setInterval(nextQuote, 4000);
+        return () => clearInterval(id);
+    }, [isAuto])
+ 
     if (!quote) {
         return <div className="text-align">Loading...</div>
     }
@@ -35,10 +50,12 @@ export default function Quotes() {
             <p className="text-sm font-bold">{quote.author}</p>
 
             <button
-                onClick={nextQuote}
-                className=" rounded-full m-10 border-2 px-6 py-4 bg-blue-500 transition delay-75 duration-300 ease-in-out hover:translate-y-2 hover:scale-110 hover:bg-indigo-500 ">
+                onClick={nextQuoteWithClick}
+                className=" rounded-full m-10 border-2 px-6 py-4 bg-blue-500 transition delay-75 duration-300 ease-in-out hover:-translate-x-2 hover:scale-110 hover:bg-indigo-500 ">
                 New Quote
                 </button> 
+            <button onClick={() => setIsAuto(a => !a) } className="rounded-full m-10 border-2 px-6 py-4 bg-blue-500 transition delay-75 duration-300 ease-in-out hover:translate-x-2 hover:scale-110 hover:bg-indigo-500 ">{isAuto ? 'Pause' : 'Auto'} </button>
+            <p className="text-2xl ">Clicks : {clicks}</p>
         </div>
     );
 }
