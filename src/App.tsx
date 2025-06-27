@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Header from './components/Header';
 import About from './components/About';
 import Quotes from './components/Quotes';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
     <nav className='flex gap-4 justify-center mt-4'>
       <Link to='/' className='underline'>Acceuil</Link>
       <Link to='/about' className='underline'>A propos</Link>
+      <Link to='*'>Page Not Done</Link>
+      <Link to="/non-existe" className="underline">Page&nbsp;Not&nbsp;Done</Link>
     </nav>
 
     <Routes>
@@ -28,6 +31,16 @@ function App() {
         </>
       }>
       </Route>
+
+      <Route path='*' element={
+        <>
+        <NotFound message='The page you are looking for does not exist. Please check the URL or return to the home page.'>
+        </NotFound>
+        <Link to='/'>Back to main page</Link>
+        </>
+      }>
+      </Route>
+
     </Routes>
   </BrowserRouter>
   );
