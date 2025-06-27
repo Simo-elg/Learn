@@ -1,42 +1,53 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Mon Site
 
-Currently, two official plugins are available:
+This project is a modern React web application built with Vite and TypeScript. It demonstrates the use of React Router for navigation, protected routes, form validation, and component-based architecture.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Home Page:** Displays a header and a list of beautiful quotes.
+- **About Page:** Information about the site or project.
+- **Team Page:** Protected route that only displays content if the user is logged in.
+- **Login Page:** Allows users to "log in" (stateful, for demo purposes) to access protected content.
+- **Contact Page:** Includes a form with validation for name, email, and message fields. Shows error messages for invalid input and displays a success alert on valid submission.
+- **404 Not Found:** Custom page for undefined routes.
+- **Navigation Bar:** Sticky navigation at the top for easy access to all main pages.
+- **Scroll To Top:** Automatically scrolls to the top when navigating between pages.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Technologies Used
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [React Router v6](https://reactrouter.com/)
+- [Tailwind CSS](https://tailwindcss.com/) (for styling)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## How to Run
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+2. **Start the development server:**
+   ```sh
+   npm run dev
+   ```
+3. Open your browser and go to [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
+
+## Project Structure
+
+- `src/App.tsx` — Main application with routing and navigation.
+- `src/components/` — All React components (Header, About, Quotes, Team, Login, Contact, etc).
+- `public/` — Static assets.
+
+## Notes
+
+- The login system is for demonstration only and does not use real authentication.
+- The contact form validates input on the client side and does not send data to a server.
+
+---
+
+Feel free to explore and modify the project to learn more about React, routing, and form handling!
 
 export default tseslint.config({
   plugins: {
